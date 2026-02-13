@@ -1,6 +1,10 @@
+//
+// Created by Loonj on 1/28/2026.
+//
 #pragma once
-#include "player.h"
 #include "world.h"
+#include "camera.h"
+#include "game_object.h"
 
 class Game {
 public:
@@ -10,7 +14,7 @@ public:
     void render();
 
 private:
-    Player* player;
+    GameObject* player;
     World world;
     Graphics graphics;
 
@@ -19,4 +23,5 @@ private:
     Uint64 performance_frequency;
     Uint64 prev_counter;
     float lag;
+    Camera camera;
 };

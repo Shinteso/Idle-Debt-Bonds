@@ -11,15 +11,21 @@ Graphics::Graphics(const std::string& title, int window_width, int window_height
     SDL_SetRenderLogicalPresentation(renderer, width, height, SDL_LOGICAL_PRESENTATION_LETTERBOX);
 }
 
+
 void Graphics::clear() {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+        SDL_RenderClear(renderer);
 }
 
-void Graphics::draw(const SDL_FRect& rect, const Color& color) {
+void Graphics::draw(const SDL_FRect& rect, const Color& color, bool filled) {
     auto [red, green, blue, alpha] = color;
     SDL_SetRenderDrawColor(renderer, red, green, blue, alpha);
-    SDL_RenderFillRect(renderer, &rect);
+    if (filled) {
+        SDL_RenderFillRect(renderer, &rect);
+    }
+    else {
+        SDL_RenderRect(renderer, &rect);
+    }
 }
 
 void Graphics::update() {

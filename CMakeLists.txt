@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.24)
 
-project(idle-debt-bonds)
+project(game)
 
 set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-g -Wall -Wextra -pedantic)
@@ -40,19 +40,18 @@ set(SDLMIXER_WAVPACK OFF)
 set(SDLMIXER_MOD OFF)
 set(SDLMIXER_OPUS OFF)
 
+
 # FetchContent_MakeAvailable(SDL SDL_mixer SDL_image)
 FetchContent_MakeAvailable(SDL SDL_mixer)
 
 add_subdirectory(utils)
 add_subdirectory(graphics)
-add_subdirectory(game_objects)
 add_subdirectory(world)
-
 
 add_library(game_lib
     game.cpp game.h
 )
 
-target_link_libraries(game_lib PUBLIC SDL3::SDL3 graphics utils world game_objects)
+target_link_libraries(game_lib PUBLIC SDL3::SDL3 graphics utils world)
 add_executable(game main.cpp)
 target_link_libraries(game PUBLIC game_lib)

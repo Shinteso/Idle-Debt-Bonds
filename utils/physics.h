@@ -1,10 +1,22 @@
+//
+// Created by Loonj on 1/30/2026.
+//
 #pragma once
+#include "Vec.h"
 
-constexpr float gravity = 640;
-constexpr float damping = 0.9;
-constexpr float walk_acceleration = 700;
-constexpr float jump_velocity = 320;
-constexpr float terminal_velocity = 1000;
+class Physics {
+public:
+    Physics()=default;
+    Physics(Vec<float> position, Vec<float> velocity, Vec<float> acceleration);
+    Physics(Vec<float> position, Vec<float> velocity, Vec<float> acceleration, float gravity, float damping, float walk_acceleration, float jump_velocity, float terminal_velocity);
+    Vec<float> position{0,0};
+    Vec<float> velocity{0,0};
+    Vec<float> acceleration{0,0};
 
-class physics {
-};
+
+    float gravity{-30.0f};
+    float damping{0.9f};
+    float walk_acceleration{30.0f};
+    float jump_velocity{5.0f};
+    float terminal_velocity{15.0f};
+    };
