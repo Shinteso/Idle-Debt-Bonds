@@ -1,0 +1,21 @@
+Debt-Bond Idle (Incremental game)
+
+Structure background:
+- Horizontal scroller
+- Enemies/boss on right side and mc and debt-bonds on the left
+
+
+
+Structure:
+- main character is in debt and has to pay off an absorbent amount.
+- Heroes to help the main character are called debt-bonds (you pay off their debt to have them bonded to you and help you earn money/fight/hunt)
+- Currency is gold coins
+
+Maybe end of project thing to add would be:
+- Prestige function (Excess money can be converted to prestige points (ratio to be determined)
+- Prestige upgrades or shop
+- Harder difficulty scaling
+- Challenge runs/Mode
+
+ex check 4 times a day
+P(0) = (4^0)(e^-4)/0! = 0.018
