@@ -143,15 +143,3 @@ void World::move_to(Vec<float>& position, const Vec<int>& size, Vec<float>& velo
         }
     }
 }
-
-
-
-//*_
-//| |
-//-
-// pos.x = size.x, pos.y
-// pos.y = ceil(pos.y)
-// vel.7 = 0
-//
-//
-//  *//

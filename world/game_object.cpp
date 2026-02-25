@@ -20,12 +20,6 @@ GameObject::~GameObject() {
 
 void GameObject::input(World& world) {
     const bool *key_states  = SDL_GetKeyboardState(NULL);
-    // if (key_states[SDL_SCANCODE_A]) {
-    //     physics.acceleration.x += -physics.walk_acceleration;
-    // }
-    // if (key_states[SDL_SCANCODE_D]) {
-    //     physics.acceleration.x += physics.walk_acceleration;
-    // }
 
     ActionType action_type = ActionType::None;
     if (key_states[SDL_SCANCODE_SPACE]) {
