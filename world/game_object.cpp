@@ -5,39 +5,23 @@
 #include "physics.h"
 #include "world.h"
 #include "fsm.h"
-#include "Action.h"
+#include "action.h"
+#include "input.h"
 
-GameObject::GameObject(const Vec<float>& position, const Vec<int>& size, World& world, FSM* fsm, Color)
-    : physics{position,{0,0}, {0,0}}, size{size}, fsm{fsm}, color{color} {
-        physics.acceleration.y = physics.gravity;
-        fsm->current_state->on_enter(world, *this);
+GameObject::GameObject(const Vec<float>& position, const Vec<int>& size, World& world, FSM* fsm, Input* input, Color color)
+    : physics{position,{0,0}, {0, 0}}, size{size}, fsm{fsm}, input{input}, color{color} {
+    physics.acceleration.y = physics.gravity;
+    fsm->current_state->on_enter(world, *this);
 }
 
 GameObject::~GameObject() {
     delete fsm;
+    delete input;
 }
 
-
-void GameObject::input(World& world) {
-    const bool *key_states  = SDL_GetKeyboardState(NULL);
-
-    ActionType action_type = ActionType::None;
-    if (key_states[SDL_SCANCODE_SPACE]) {
-        action_type = ActionType::Jump;
-    }
-    Action* action = fsm->current_state->input(world, *this, action_type);
-    if (action != nullptr) {
-        action->perform(world, *this);
-        delete action;
-    }
-}
-
-
-void GameObject::update(World& world, double dt) {
-    // Update Player
+void GameObject::update(World &world, double dt) {
     fsm->current_state->update(world, *this, dt);
 }
-
 
 std::pair<Vec<float>, Color> GameObject::get_sprite() const {
     return {physics.position, color};

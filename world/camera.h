@@ -23,7 +23,7 @@ public:
     void render(const Vec<float>& position, const Color& color, bool filled=true) const;
     void render(const Tilemap& tilemap) const;
 
-    Physics physics;
+
 private:
     Graphics& graphics;
     float tilesize;
@@ -32,4 +32,5 @@ private:
     void calculate_visible_tiles();
     Vec<int> visible_min, visible_max;
     Vec<float> goal;
+    Physics physics;
 };
