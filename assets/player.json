@@ -1,0 +1,9 @@
+{
+  "idle": {
+    "filename": "player_idle.png",
+    "location": [0, 0],
+    "size": [48, 64],
+    "sprite_size" : [16, 32],
+    "scale": 2
+  }
+}

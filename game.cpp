@@ -1,6 +1,7 @@
 #include "game.h"
 
 #include "input.h"
+#include "asset_manager.h"
 
 Game::Game(std::string title, int width, int height)
     : graphics{title, width, height}, world{31, 11}, camera{graphics, 64}, dt{1.0/60.0}, lag{0.0}, performance_frequency{SDL_GetPerformanceFrequency()}, prev_counter{SDL_GetPerformanceCounter()} {
@@ -17,6 +18,8 @@ Game::Game(std::string title, int width, int height)
     world.add_platform(13, 4, 6, 1);
 
     player = world.create_player();
+    player->sprite = AssetManager::get_game_object_sprite("player", graphics);
+
     camera.set_location(player->physics.position);
 }
 
@@ -53,8 +56,7 @@ void Game::render() {
     camera.render(world.tilemap);
 
     // draw the player
-    auto [player_position, color] = player->get_sprite();
-    camera.render(player_position, color);
+    camera.render(*player);
 
     // update
     graphics.update();

@@ -2,8 +2,10 @@
 // Created by Loonj on 2/4/2026.
 //
 #include "camera.h"
+
 #include "graphics.h"
 #include "physics.h"
+#include "game_object.h"
 
 Camera::Camera(Graphics& graphics, float tilesize)
     : graphics{graphics}, tilesize{tilesize}{
@@ -86,4 +88,18 @@ void Camera::render(const Tilemap& tilemap) const {
         }
     }
 }
+
+void Camera::render(const Vec<float>& position, const Sprite& sprite) const {
+    Vec<float> pixel = world_to_screen(position);
+    graphics.draw_sprite(pixel, sprite);
+}
+
+
+void Camera::render(const GameObject& obj) const {
+    if (grid_toggle.on) {
+        render(obj.physics.position, obj.color);
+    }
+    render(obj.physics.position, obj.sprite);
+}
+
 

@@ -4,6 +4,7 @@
 #pragma once
 #include "fsm.h"
 #include "world.h"
+#include "game_object.h"
 
 class Standing: public State {
 public:
